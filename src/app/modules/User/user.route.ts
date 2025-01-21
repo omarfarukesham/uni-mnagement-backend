@@ -41,7 +41,10 @@ router.post(
   auth(USER_ROLE.superAdmin, USER_ROLE.admin),
   upload.single('file'),
   (req: Request, res: Response, next: NextFunction) => {
+    // console.log("hi",req.body.data);
     req.body = JSON.parse(req.body.data);
+    // req.body = req.body.data;
+    // console.log(req.cookies);
     next();
   },
   validateRequest(createAdminValidationSchema),
